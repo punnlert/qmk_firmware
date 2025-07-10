@@ -28,7 +28,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case DSK_LEFT:
         if (record->event.pressed) {
             // when keycode QMKBEST is pressed
-            SEND_STRING(SS_HOLD(X_LALT) SS_TAP(X_LEFT) SS_RELEASE(X_LALT));
+            SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_LEFT) SS_UP(X_LCTL));
         } else {
             // when keycode QMKBEST is released
         }
@@ -37,7 +37,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case DSK_RIGHT:
         if (record->event.pressed) {
             // when keycode QMKURL is pressed
-            SEND_STRING(SS_HOLD(X_LALT) SS_TAP(X_RIGHT) SS_RELEASE(X_LALT));
+            SEND_STRING(SS_DOWN(X_LCTL) SS_TAP(X_RIGHT) SS_UP(X_LCTL));
         } else {
             // when keycode QMKURL is released
         }
