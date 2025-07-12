@@ -1,1 +1,2 @@
 SEND_STRING_ENABLE = yes
+OLED_ENABLE = yes
