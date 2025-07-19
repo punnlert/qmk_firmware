@@ -63,88 +63,102 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-//        ┌──────┬───┬───┬───────┬──────┬──────┐   ┌──────┬─────┬───────┬───┬───┬──────┐
-//        │ tab  │ q │ w │   e   │  r   │  t   │   │  y   │  u  │   i   │ o │ p │ bspc │
-//        ├──────┼───┼───┼───────┼──────┼──────┤   ├──────┼─────┼───────┼───┼───┼──────┤
-//        │ esc  │ a │ s │   d   │  f   │  g   │   │  h   │  j  │   k   │ l │ ; │  '   │
-//        ├──────┼───┼───┼───────┼──────┼──────┤   ├──────┼─────┼───────┼───┼───┼──────┤
-//        │ lctl │ z │ x │   c   │  v   │  b   │   │  n   │  m  │   ,   │ . │ / │ esc  │
-//        └──────┴───┴───┼───────┼──────┼──────┤   ├──────┼─────┼───────┼───┴───┴──────┘
-//                       │ MO(2) │ lsft │ lgui │   │ bspc │ spc │ MO(3) │
-//                       └───────┴──────┴──────┘   └──────┴─────┴───────┘
+//    ┌──────┬────────────────┬─────────────┬──────┬──────┬──────┐   ┌──────┬─────┬─────┬───┬───┬──────┐
+//    │ tab  │       q        │      w      │  e   │  r   │  t   │   │  y   │  u  │  i  │ o │ p │ lalt │
+//    ├──────┼────────────────┼─────────────┼──────┼──────┼──────┤   ├──────┼─────┼─────┼───┼───┼──────┤
+//    │ esc  │       a        │      s      │  d   │  f   │  g   │   │  h   │  j  │  k  │ l │ ; │  '   │
+//    ├──────┼────────────────┼─────────────┼──────┼──────┼──────┤   ├──────┼─────┼─────┼───┼───┼──────┤
+//    │ lalt │ LT(_SYMBOL, z) │ LT(_NUM, x) │  c   │  v   │  b   │   │  n   │  m  │  ,  │ . │ / │ esc  │
+//    └──────┴────────────────┴─────────────┼──────┼──────┼──────┤   ├──────┼─────┼─────┼───┴───┴──────┘
+//                                          │ lctl │ lsft │ lgui │   │ bspc │ spc │ ent │
+//                                          └──────┴──────┴──────┘   └──────┴─────┴─────┘
 [_DEFAULT_LAYER_1] = LAYOUT_split_3x6_3(
-      KC_TAB  , KC_Q , KC_W , KC_E  , KC_R    , KC_T    ,     KC_Y    , KC_U   , KC_I    , KC_O   , KC_P    , KC_BSPC,
-      KC_ESC  , KC_A , KC_S , KC_D  , KC_F    , KC_G    ,     KC_H    , KC_J   , KC_K    , KC_L   , KC_SCLN , KC_QUOT,
-      KC_LCTL , KC_Z , KC_X , KC_C  , KC_V    , KC_B    ,     KC_N    , KC_M   , KC_COMM , KC_DOT , KC_SLSH , KC_ESC ,
-                              MO(2) , KC_LSFT , KC_LGUI ,     KC_BSPC , KC_SPC , MO(3)
+  KC_TAB  , KC_Q              , KC_W           , KC_E    , KC_R    , KC_T    ,     KC_Y    , KC_U   , KC_I    , KC_O   , KC_P    , KC_LALT,
+  KC_ESC  , KC_A              , KC_S           , KC_D    , KC_F    , KC_G    ,     KC_H    , KC_J   , KC_K    , KC_L   , KC_SCLN , KC_QUOT,
+  KC_LALT , LT(_SYMBOL, KC_Z) , LT(_NUM, KC_X) , KC_C    , KC_V    , KC_B    ,     KC_N    , KC_M   , KC_COMM , KC_DOT , KC_SLSH , KC_ESC ,
+                                                 KC_LCTL , KC_LSFT , KC_LGUI ,     KC_BSPC , KC_SPC , KC_ENT
 ),
 
-//        ┌──────┬───┬───┬───────┬──────┬──────┐   ┌──────┬─────┬───────┬───┬───┬──────┐
-//        │ tab  │ q │ w │   f   │  p   │  b   │   │  j   │  l  │   u   │ y │ ; │ bspc │
-//        ├──────┼───┼───┼───────┼──────┼──────┤   ├──────┼─────┼───────┼───┼───┼──────┤
-//        │ esc  │ a │ r │   s   │  t   │  g   │   │  m   │  n  │   e   │ i │ o │  '   │
-//        ├──────┼───┼───┼───────┼──────┼──────┤   ├──────┼─────┼───────┼───┼───┼──────┤
-//        │ lctl │ x │ c │   d   │  v   │  z   │   │  k   │  h  │   ,   │ . │ / │ esc  │
-//        └──────┴───┴───┼───────┼──────┼──────┤   ├──────┼─────┼───────┼───┴───┴──────┘
-//                       │ MO(2) │ lsft │ lgui │   │ bspc │ spc │ MO(3) │
-//                       └───────┴──────┴──────┘   └──────┴─────┴───────┘
+//    ┌──────┬────────────────┬─────────────┬──────┬──────┬──────┐   ┌──────┬─────┬─────┬───┬───┬──────┐
+//    │ tab  │       q        │      w      │  f   │  p   │  b   │   │  j   │  l  │  u  │ y │ ; │ lalt │
+//    ├──────┼────────────────┼─────────────┼──────┼──────┼──────┤   ├──────┼─────┼─────┼───┼───┼──────┤
+//    │ esc  │       a        │      r      │  s   │  t   │  g   │   │  m   │  n  │  e  │ i │ o │  '   │
+//    ├──────┼────────────────┼─────────────┼──────┼──────┼──────┤   ├──────┼─────┼─────┼───┼───┼──────┤
+//    │ lalt │ LT(_SYMBOL, z) │ LT(_NUM, x) │  c   │  d   │  v   │   │  k   │  h  │  ,  │ . │ / │ esc  │
+//    └──────┴────────────────┴─────────────┼──────┼──────┼──────┤   ├──────┼─────┼─────┼───┴───┴──────┘
+//                                          │ lctl │ lsft │ lgui │   │ bspc │ spc │ ent │
+//                                          └──────┴──────┴──────┘   └──────┴─────┴─────┘
 [_DEFAULT_LAYER_2] = LAYOUT_split_3x6_3(
-      KC_TAB  , KC_Q , KC_W , KC_F  , KC_P    , KC_B    ,     KC_J    , KC_L   , KC_U    , KC_Y   , KC_SCLN , KC_BSPC,
-      KC_ESC  , KC_A , KC_R , KC_S  , KC_T    , KC_G    ,     KC_M    , KC_N   , KC_E    , KC_I   , KC_O    , KC_QUOT,
-      KC_LCTL , KC_X , KC_C , KC_D  , KC_V    , KC_Z    ,     KC_K    , KC_H   , KC_COMM , KC_DOT , KC_SLSH , KC_ESC ,
-                              MO(2) , KC_LSFT , KC_LGUI ,     KC_BSPC , KC_SPC , MO(3)
+  KC_TAB  , KC_Q              , KC_W           , KC_F    , KC_P    , KC_B    ,     KC_J    , KC_L   , KC_U    , KC_Y   , KC_SCLN , KC_LALT,
+  KC_ESC  , KC_A              , KC_R           , KC_S    , KC_T    , KC_G    ,     KC_M    , KC_N   , KC_E    , KC_I   , KC_O    , KC_QUOT,
+  KC_LALT , LT(_SYMBOL, KC_Z) , LT(_NUM, KC_X) , KC_C    , KC_D    , KC_V    ,     KC_K    , KC_H   , KC_COMM , KC_DOT , KC_SLSH , KC_ESC ,
+                                                 KC_LCTL , KC_LSFT , KC_LGUI ,     KC_BSPC , KC_SPC , KC_ENT
 ),
 
-//        ┌──────┬─────┬─────┬─────┬──────┬──────┐   ┌─────┬─────┬───────┬───┬─────┬─────┐
-//        │ tab  │     │     │     │      │      │   │  =  │  1  │   2   │ 3 │     │     │
-//        ├──────┼─────┼─────┼─────┼──────┼──────┤   ├─────┼─────┼───────┼───┼─────┼─────┤
-//        │ esc  │     │     │     │      │      │   │  0  │  4  │   5   │ 6 │     │     │
-//        ├──────┼─────┼─────┼─────┼──────┼──────┤   ├─────┼─────┼───────┼───┼─────┼─────┤
-//        │ lctl │     │     │     │      │      │   │  -  │  7  │   8   │ 9 │     │     │
-//        └──────┴─────┴─────┼─────┼──────┼──────┤   ├─────┼─────┼───────┼───┴─────┴─────┘
-//                           │     │ lsft │ lgui │   │ ent │     │ MO(4) │
-//                           └─────┴──────┴──────┘   └─────┴─────┴───────┘
+//    ┌──────┬──────────┬─────┬──────┬──────┬──────┐   ┌──────┬─────┬─────┬───┬─────┬─────┐
+//    │ tab  │          │     │      │      │      │   │  =   │  1  │  2  │ 3 │     │     │
+//    ├──────┼──────────┼─────┼──────┼──────┼──────┤   ├──────┼─────┼─────┼───┼─────┼─────┤
+//    │ esc  │          │     │ btn1 │ btn2 │      │   │  0   │  4  │  5  │ 6 │     │     │
+//    ├──────┼──────────┼─────┼──────┼──────┼──────┤   ├──────┼─────┼─────┼───┼─────┼─────┤
+//    │ lalt │ MO(_NAV) │     │ ent  │      │      │   │  -   │  7  │  8  │ 9 │     │     │
+//    └──────┴──────────┴─────┼──────┼──────┼──────┤   ├──────┼─────┼─────┼───┴─────┴─────┘
+//                            │ lctl │ lsft │ lgui │   │ bspc │ spc │ ent │
+//                            └──────┴──────┴──────┘   └──────┴─────┴─────┘
 [_NUM] = LAYOUT_split_3x6_3(
-      KC_TAB  , _______ , _______ , _______ , _______ , _______ ,     KC_EQUAL , KC_1    , KC_2  , KC_3 , _______ , _______,
-      KC_ESC  , _______ , _______ , _______ , _______ , _______ ,     KC_0     , KC_4    , KC_5  , KC_6 , _______ , _______,
-      KC_LCTL , _______ , _______ , _______ , _______ , _______ ,     KC_MINUS , KC_7    , KC_8  , KC_9 , _______ , _______,
-                                    _______ , KC_LSFT , KC_LGUI ,     KC_ENT   , _______ , MO(4)
+  KC_TAB  , _______  , _______ , _______ , _______ , _______ ,     KC_EQUAL , KC_1   , KC_2   , KC_3 , _______ , _______,
+  KC_ESC  , _______  , _______ , KC_BTN1 , KC_BTN2 , _______ ,     KC_0     , KC_4   , KC_5   , KC_6 , _______ , _______,
+  KC_LALT , MO(_NAV) , _______ , KC_ENT  , _______ , _______ ,     KC_MINUS , KC_7   , KC_8   , KC_9 , _______ , _______,
+                                 KC_LCTL , KC_LSFT , KC_LGUI ,     KC_BSPC  , KC_SPC , KC_ENT
 ),
 
-//        ┌──────┬────┬────┬───────┬──────┬──────┐   ┌──────┬─────┬─────┬───┬───┬──────┐
-//        │ tab  │ !  │ @  │   #   │  $   │  %   │   │  ^   │  &  │  *  │ ( │ ) │ bspc │
-//        ├──────┼────┼────┼───────┼──────┼──────┤   ├──────┼─────┼─────┼───┼───┼──────┤
-//        │ lctl │ no │ no │  no   │  no  │  no  │   │  -   │  =  │  [  │ ] │ \ │  `   │
-//        ├──────┼────┼────┼───────┼──────┼──────┤   ├──────┼─────┼─────┼───┼───┼──────┤
-//        │ lctl │ no │ no │  no   │  no  │  no  │   │  _   │  +  │  {  │ } │ | │  ~   │
-//        └──────┴────┴────┼───────┼──────┼──────┤   ├──────┼─────┼─────┼───┴───┴──────┘
-//                         │ MO(4) │ lsft │ lgui │   │ bspc │ spc │     │
-//                         └───────┴──────┴──────┘   └──────┴─────┴─────┘
+//    ┌──────┬─────┬──────────┬──────┬──────┬──────┐   ┌──────┬─────┬─────┬───┬───┬─────┐
+//    │ tab  │  !  │    @     │  #   │  $   │  %   │   │  ^   │  &  │  *  │ ( │ ) │ ent │
+//    ├──────┼─────┼──────────┼──────┼──────┼──────┤   ├──────┼─────┼─────┼───┼───┼─────┤
+//    │ esc  │     │          │      │      │      │   │  -   │  =  │  [  │ ] │ \ │  `  │
+//    ├──────┼─────┼──────────┼──────┼──────┼──────┤   ├──────┼─────┼─────┼───┼───┼─────┤
+//    │ lalt │     │ MO(_NAV) │      │      │      │   │  _   │  +  │  {  │ } │ | │  ~  │
+//    └──────┴─────┴──────────┼──────┼──────┼──────┤   ├──────┼─────┼─────┼───┴───┴─────┘
+//                            │ lctl │ lsft │ lgui │   │ bspc │ spc │ ent │
+//                            └──────┴──────┴──────┘   └──────┴─────┴─────┘
 [_SYMBOL] = LAYOUT_split_3x6_3(
-      KC_TAB  , KC_EXLM , KC_AT   , KC_HASH , KC_DLR  , KC_PERC ,     KC_CIRC , KC_AMPR , KC_ASTR , KC_LPRN , KC_RPRN , KC_BSPC,
-      KC_LCTL , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,     KC_MINS , KC_EQL  , KC_LBRC , KC_RBRC , KC_BSLS , KC_GRV ,
-      KC_LCTL , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,     KC_UNDS , KC_PLUS , KC_LCBR , KC_RCBR , KC_PIPE , KC_TILD,
-                                    MO(4)   , KC_LSFT , KC_LGUI ,     KC_BSPC , KC_SPC  , _______
+  KC_TAB  , KC_EXLM , KC_AT    , KC_HASH , KC_DLR  , KC_PERC ,     KC_CIRC , KC_AMPR , KC_ASTR , KC_LPRN , KC_RPRN , KC_ENT ,
+  KC_ESC  , _______ , _______  , _______ , _______ , _______ ,     KC_MINS , KC_EQL  , KC_LBRC , KC_RBRC , KC_BSLS , KC_GRV ,
+  KC_LALT , _______ , MO(_NAV) , _______ , _______ , _______ ,     KC_UNDS , KC_PLUS , KC_LCBR , KC_RCBR , KC_PIPE , KC_TILD,
+                                 KC_LCTL , KC_LSFT , KC_LGUI ,     KC_BSPC , KC_SPC  , KC_ENT
 ),
 
-//        ┌─────────┬────────┬────────┬─────┬──────┬──────┐   ┌──────────┬──────────────┬────────────────┬───────────┬────┬────┐
-//        │ QK_BOOT │ PDF(0) │ PDF(1) │ no  │  no  │  no  │   │    no    │ kB_VOLUME_UP │ kB_VOLUME_DOWN │  kB_MUTE  │ no │ no │
-//        ├─────────┼────────┼────────┼─────┼──────┼──────┤   ├──────────┼──────────────┼────────────────┼───────────┼────┼────┤
-//        │   no    │   no   │   no   │ no  │  no  │  no  │   │   left   │     down     │       up       │   rght    │ no │ no │
-//        ├─────────┼────────┼────────┼─────┼──────┼──────┤   ├──────────┼──────────────┼────────────────┼───────────┼────┼────┤
-//        │   no    │   no   │   no   │ no  │  no  │  no  │   │ DSK_LEFT │      no      │       no       │ DSK_RIGHT │ no │ no │
-//        └─────────┴────────┴────────┼─────┼──────┼──────┤   ├──────────┼──────────────┼────────────────┼───────────┴────┴────┘
-//                                    │     │ lsft │ lgui │   │   bspc   │     spc      │                │
-//                                    └─────┴──────┴──────┘   └──────────┴──────────────┴────────────────┘
+//    ┌─────────┬──────────────┬───────────────┬──────┬──────┬──────┐   ┌──────────┬──────────────┬────────────────┬───────────┬─────┬─────────┐
+//    │ QK_BOOT │ PDF(_QWERTY) │ PDF(_COLEMAK) │      │      │      │   │          │ kB_VOLUME_UP │ kB_VOLUME_DOWN │  kB_MUTE  │     │ QK_BOOT │
+//    ├─────────┼──────────────┼───────────────┼──────┼──────┼──────┤   ├──────────┼──────────────┼────────────────┼───────────┼─────┼─────────┤
+//    │         │              │               │      │      │      │   │   left   │     down     │       up       │   rght    │     │         │
+//    ├─────────┼──────────────┼───────────────┼──────┼──────┼──────┤   ├──────────┼──────────────┼────────────────┼───────────┼─────┼─────────┤
+//    │         │              │               │      │      │      │   │ DSK_LEFT │              │                │ DSK_RIGHT │     │         │
+//    └─────────┴──────────────┴───────────────┼──────┼──────┼──────┤   ├──────────┼──────────────┼────────────────┼───────────┴─────┴─────────┘
+//                                             │ lctl │ lsft │ lgui │   │   bspc   │     spc      │      ent       │
+//                                             └──────┴──────┴──────┘   └──────────┴──────────────┴────────────────┘
 [_NAV] = LAYOUT_split_3x6_3(
-      QK_BOOT , PDF(0)  , PDF(1)  , XXXXXXX , XXXXXXX , XXXXXXX ,     XXXXXXX  , KC_KB_VOLUME_UP , KC_KB_VOLUME_DOWN , KC_KB_MUTE , XXXXXXX , XXXXXXX,
-      XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,     KC_LEFT  , KC_DOWN         , KC_UP             , KC_RIGHT   , XXXXXXX , XXXXXXX,
-      XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,     DSK_LEFT , XXXXXXX         , XXXXXXX           , DSK_RIGHT  , XXXXXXX , XXXXXXX,
-                                    _______ , KC_LSFT , KC_LGUI ,     KC_BSPC  , KC_SPC          , _______
+  QK_BOOT , PDF(_QWERTY) , PDF(_COLEMAK) , _______ , _______ , _______ ,     _______  , KC_KB_VOLUME_UP , KC_KB_VOLUME_DOWN , KC_KB_MUTE , _______ , QK_BOOT,
+  _______ , _______      , _______       , _______ , _______ , _______ ,     KC_LEFT  , KC_DOWN         , KC_UP             , KC_RIGHT   , _______ , _______,
+  _______ , _______      , _______       , _______ , _______ , _______ ,     DSK_LEFT , _______         , _______           , DSK_RIGHT  , _______ , _______,
+                                           KC_LCTL , KC_LSFT , KC_LGUI ,     KC_BSPC  , KC_SPC          , KC_ENT
 )
 };
 
 #ifdef OLED_ENABLE
+
+// oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+//     if (!is_keyboard_master()) {
+//         return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
+//     }
+//
+//     return rotation;
+// }
+
+// so that the oled from the non-master side still updates when change layer
+bool should_process_keypress(void) {
+    return true;
+}
+
 bool oled_task_user(void){
     switch (get_highest_layer(default_layer_state)) {
         case _QWERTY:
@@ -160,7 +174,7 @@ bool oled_task_user(void){
     oled_set_cursor(0, 1);
     switch (get_highest_layer(layer_state)) {
         case _QWERTY ... _COLEMAK:
-            oled_write_P(PSTR("typing..\n"), false);
+            oled_write_P(PSTR("base\n"), false);
             break;
         case _NUM:
             oled_write_P(PSTR("number\n"), false);
